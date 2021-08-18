@@ -1,0 +1,24 @@
+body{
+    background-color: grey;
+}
+#controller{
+    background-color: white;
+    height: 770px;;
+    width: 900px;
+    margin: auto;
+    /* border-radius: 15px; */
+}
+#game{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#timer{
+    margin-left: 500px;
+}
+
