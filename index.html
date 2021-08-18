@@ -8,7 +8,7 @@
     <script src="app.js" defer></script>
     <title>Memory Game</title>
 </head>
-<body onload="game.makeCards()">
+<body>
     <div id="controller">
         <header>
             <h1>Memory Game</h1>
@@ -16,7 +16,7 @@
         </header>
         <div id="game">
         </div>
-        <button>start</button>
+        <button onclick="game.makeCards()">start</button>
         <footer></footer>
     </div>
 </body>

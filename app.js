@@ -1,6 +1,8 @@
+const button = document.querySelector('button')
 const chosen = []
 const game = {
     makeCards(){
+        button.style.display = 'none'
         for (let i = 0; i < 16; i++){
             const screen = document.querySelector('#game')
             const ele = document.createElement('div')
