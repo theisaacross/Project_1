@@ -58,13 +58,14 @@ const game = {
         }
     },
     checkForMatch(){
-        if (chosen[0].class === chosen[1].class){
+        if (chosen[0].getAttribute('class') === chosen[1].getAttribute('class')){
             chosen[0].style.backgroundColor = 'green'
             chosen[1].style.backgroundColor = 'green'
             finished.push(chosen[0],chosen[1])
             chosen.pop()
             chosen.pop()
-        }else{
+        }
+        if (chosen[0].getAttribute('class') !== chosen[1].getAttribute('class')){
             chosen[0].style.backgroundColor = 'red'
             chosen[1].style.backgroundColor = 'red'
             chosen.pop()
