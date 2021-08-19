@@ -1,4 +1,6 @@
 const button = document.querySelector('button')
+const timer = document.querySelector('#timer')
+let time = 0
 const chosen = []
 const finished = []
 const arr = [
@@ -20,6 +22,17 @@ const arr = [
     {class: 'seven', name: 'seven'},
 ]
 const game = {
+    clock(){
+        let timerStart = setInterval(()=>{
+            time++
+            timer.innerText = `Timer: ${time}s`
+            if (finished.length === 16){
+                clearInterval(timerStart)
+                alert(`It took you ${time} seconds to complete it!`)
+                location.reload()
+            }
+        },1000)
+    },
     makeCards(){
         button.style.display = 'none'
         for (let i = 16; i > 0; i--){
@@ -35,7 +48,6 @@ const game = {
             screen.appendChild(ele)
             ele.innerText = arr[randNum].name
             arr.splice(randNum,1)
-            console.log(randNum)
         }
     },
     flipCards(event){
@@ -50,20 +62,15 @@ const game = {
             chosen[0].style.backgroundColor = 'green'
             chosen[1].style.backgroundColor = 'green'
             finished.push(chosen[0],chosen[1])
-            console.log(chosen)
             chosen.pop()
             chosen.pop()
-            console.log(chosen)
         }else{
-            console.log(false)
+            chosen[0].style.backgroundColor = 'red'
+            chosen[1].style.backgroundColor = 'red'
             chosen.pop()
             chosen.pop()
-        }
-        if (finished.length === 16){
-            setTimeout(() => {
-                alert('you win!!')
-            }, 400);
         }
     }
 }
 button.addEventListener('click',game.makeCards)
+button.addEventListener('click', game.clock)
