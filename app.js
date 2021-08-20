@@ -4,22 +4,22 @@ let time = 0
 const chosen = []
 const finished = []
 const arr = [
-    {class: 'zero', name: '0'},
-    {class: 'zero', name: 'zero'},
-    {class: 'one', name: '1'},
-    {class: 'one', name: 'one'},
-    {class: 'two', name: '2'},
-    {class: 'two', name: 'two'},
-    {class: 'three', name: '3'},
-    {class: 'three', name: 'three'},
-    {class: 'four' , name: '4'},
-    {class: 'four', name: 'four'},
-    {class: 'five', name: '5'},
-    {class: 'five', name: 'five'},
-    {class: 'six', name: '6'},
-    {class: 'six', name: 'six'},
-    {class: 'seven', name: '7'},
-    {class: 'seven', name: 'seven'},
+    {class: 'zero', src: 'AnnoyedEmoji.png'},
+    {class: 'zero', src: 'AnnoyedEmoji.png'},
+    {class: 'one', src: 'CryingEmoji.jpeg'},
+    {class: 'one', src: 'CryingEmoji.jpeg'},
+    {class: 'two', src: 'DroolingEmoji.png'},
+    {class: 'two', src: 'DroolingEmoji.png'},
+    {class: 'three', src: 'DrunkEmoji.png'},
+    {class: 'three', src: 'DrunkEmoji.png'},
+    {class: 'four' , src: 'ScaredEmoji.png'},
+    {class: 'four', src: 'ScaredEmoji.png'},
+    {class: 'five', src: 'SmileEmoji.jpeg'},
+    {class: 'five', src: 'SmileEmoji.jpeg'},
+    {class: 'six', src: 'StarEyes.png'},
+    {class: 'six', src: 'StarEyes.png'},
+    {class: 'seven', src: 'WinkEmoji.jpeg'},
+    {class: 'seven', src: 'WinkEmoji.jpeg'},
 ]
 const game = {
     clock(){
@@ -40,14 +40,19 @@ const game = {
             const ele = document.createElement('div')
             let randNum = Math.floor(Math.random() * i )
             ele.setAttribute('class', arr[randNum].class)
+            let randEmoji = arr[randNum].src
+            ele.style.backgroundImage = 'url('+ randEmoji+ ')';
+            ele.style.display = 'none'
+            ele.style.backgroundSize = 'cover';
+            ele.style.backgroundPosition = 'center';
             ele.style.border = '1px solid black';
             ele.style.width = '120px';
             ele.style.height = '120px';
             ele.style.margin = '10px 35px 35px 35px';
             ele.addEventListener('click', game.flipCards)
             screen.appendChild(ele)
-            ele.innerText = arr[randNum].name
             arr.splice(randNum,1)
+            console.log(randEmoji)
         }
     },
     flipCards(event){
@@ -58,18 +63,26 @@ const game = {
         }
     },
     checkForMatch(){
-        if (chosen[0].getAttribute('class') === chosen[1].getAttribute('class')){
-            chosen[0].style.backgroundColor = 'green'
-            chosen[1].style.backgroundColor = 'green'
+        let firstChosen = chosen[0].getAttribute('class')
+        let secondChosen = chosen[1].getAttribute('class')
+        if (firstChosen === secondChosen){
+            // chosen[0].style.backgroundColor = 'green'
+            // chosen[1].style.backgroundColor = 'green'
             finished.push(chosen[0],chosen[1])
+            console.log(chosen[0])
+            console.log(chosen[1])
             chosen.pop()
             chosen.pop()
+            console.log('correct')
         }
-        if (chosen[0].getAttribute('class') !== chosen[1].getAttribute('class')){
-            chosen[0].style.backgroundColor = 'red'
-            chosen[1].style.backgroundColor = 'red'
+        if (firstChosen !== secondChosen){
+            // chosen[0].style.backgroundColor = 'red'
+            // chosen[1].style.backgroundColor = 'red'
             chosen.pop()
             chosen.pop()
+            console.log('wrong')
+            console.log(chosen[0])
+            console.log(chosen[1])
         }
     }
 }
