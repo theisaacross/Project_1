@@ -4,6 +4,7 @@ const scoreboard = document.querySelector('#scoreboard')
 const list = document.querySelector('#list')
 const screen = document.querySelector('#game')
 const boxes = document.querySelectorAll('.box')
+let prevScore = 9999999
 let arr
 const chosen = []
 const finished = []
@@ -24,9 +25,10 @@ const game = {
                 clearInterval(timerStart)
                 alert(`It took you ${time} seconds to complete it!`)
                 game.restart()
-                const score = document.createElement('li')
-                score.innerText = `${time} Seconds`
-                list.appendChild(score)
+                if (time < prevScore){
+                    prevScore = time
+                    list.innerText = `${time} Seconds`
+                }
                 button.style.visibility = 'visible'
             }
         },1000)
@@ -87,7 +89,6 @@ const game = {
             finished.push(chosen[0],chosen[1])
             chosen.pop()
             chosen.pop()
-            console.log('correct')
         }
         if (firstChosen !== secondChosen){
             setTimeout(()=>{
@@ -96,7 +97,6 @@ const game = {
                 chosen.pop()
                 chosen.pop()
             },300)
-            console.log('wrong')
         }
     }
 }
