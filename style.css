@@ -5,8 +5,9 @@ body{
     background-color: white;
     height: 770px;;
     width: 900px;
-    margin: auto;
-    /* border-radius: 15px; */
+    margin:auto;
+    margin-left: 300px;
+    border-radius: 20%;
 }
 #game{
     display:flex;
@@ -16,13 +17,25 @@ body{
     text-align: center;
 }
 header{
-    display: flex;
-    flex-direction: row;
     align-items: center;
 }
 #timer{
-    margin-left: 500px;
+    text-align: center;
 }
 div{
-    margin-left:0px;
+    margin-left:60px;
+}
+h1{
+    text-align: center;
+}
+button{
+    margin-left: 425px;
+}
+#scoreboard{
+    background-color: white;
+    float:left;
+    height: 200px;
+    width: 200px;
+    border-radius: 20%;
+    text-align: center;
 }

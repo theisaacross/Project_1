@@ -1,6 +1,9 @@
 const button = document.querySelector('button')
 const timer = document.querySelector('#timer')
-let time = 0
+const scoreboard = document.querySelector('#scoreboard')
+const list = document.querySelector('#list')
+const screen = document.querySelector('#game')
+const boxes = document.querySelectorAll('.box')
 const chosen = []
 const finished = []
 const arr = [
@@ -22,21 +25,30 @@ const arr = [
     {class: 'seven', src: 'WinkEmoji.jpeg'},
 ]
 const game = {
+    restart(){
+        while (screen.firstChild){
+            screen.removeChild(screen.lastChild)
+        }
+    },
     clock(){
+        let time = 0
         let timerStart = setInterval(()=>{
             time++
             timer.innerText = `Timer: ${time}s`
             if (finished.length === 16){
                 clearInterval(timerStart)
                 alert(`It took you ${time} seconds to complete it!`)
-                location.reload()
+                game.restart()
+                const score = document.createElement('li')
+                score.innerText = `${time} Seconds`
+                list.appendChild(score)
+                button.style.visibility = 'visible'
             }
         },1000)
     },
     makeCards(){
-        button.style.display = 'none'
+        button.style.visibility = 'hidden'
         for (let i = 16; i > 0; i--){
-            const screen = document.querySelector('#game')
             const ele = document.createElement('div')
             let randNum = Math.floor(Math.random() * i )
             ele.setAttribute('class', arr[randNum].class)
