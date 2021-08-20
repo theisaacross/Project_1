@@ -42,21 +42,22 @@ const game = {
             ele.setAttribute('class', arr[randNum].class)
             let randEmoji = arr[randNum].src
             ele.style.backgroundImage = 'url('+ randEmoji+ ')';
-            ele.style.display = 'none'
-            ele.style.backgroundSize = 'cover';
-            ele.style.backgroundPosition = 'center';
+            ele.style.backgroundPosition = '-999px';
+            ele.style.backgroundRepeat = 'no-repeat'
             ele.style.border = '1px solid black';
+            ele.style.borderRadius = '50%';
             ele.style.width = '120px';
             ele.style.height = '120px';
             ele.style.margin = '10px 35px 35px 35px';
             ele.addEventListener('click', game.flipCards)
             screen.appendChild(ele)
             arr.splice(randNum,1)
-            console.log(randEmoji)
         }
     },
     flipCards(event){
         let cardID = event.target
+        cardID.style.backgroundSize = 'cover';
+        cardID.style.backgroundPosition = 'center';
         chosen.push(cardID) 
         if (chosen.length === 2){
             setTimeout(game.checkForMatch,200)
@@ -66,23 +67,21 @@ const game = {
         let firstChosen = chosen[0].getAttribute('class')
         let secondChosen = chosen[1].getAttribute('class')
         if (firstChosen === secondChosen){
-            // chosen[0].style.backgroundColor = 'green'
-            // chosen[1].style.backgroundColor = 'green'
+            chosen[0].removeEventListener('click', game.flipCards)
+            chosen[1].removeEventListener('click', game.flipCards)
             finished.push(chosen[0],chosen[1])
-            console.log(chosen[0])
-            console.log(chosen[1])
             chosen.pop()
             chosen.pop()
             console.log('correct')
         }
         if (firstChosen !== secondChosen){
-            // chosen[0].style.backgroundColor = 'red'
-            // chosen[1].style.backgroundColor = 'red'
-            chosen.pop()
-            chosen.pop()
+            setTimeout(()=>{
+                chosen[0].style.backgroundPosition = '-999px';
+                chosen[1].style.backgroundPosition = '-999px';
+                chosen.pop()
+                chosen.pop()
+            },300)
             console.log('wrong')
-            console.log(chosen[0])
-            console.log(chosen[1])
         }
     }
 }
