@@ -4,30 +4,15 @@ const scoreboard = document.querySelector('#scoreboard')
 const list = document.querySelector('#list')
 const screen = document.querySelector('#game')
 const boxes = document.querySelectorAll('.box')
+let arr
 const chosen = []
 const finished = []
-const arr = [
-    {class: 'zero', src: 'AnnoyedEmoji.png'},
-    {class: 'zero', src: 'AnnoyedEmoji.png'},
-    {class: 'one', src: 'CryingEmoji.jpeg'},
-    {class: 'one', src: 'CryingEmoji.jpeg'},
-    {class: 'two', src: 'DroolingEmoji.png'},
-    {class: 'two', src: 'DroolingEmoji.png'},
-    {class: 'three', src: 'DrunkEmoji.png'},
-    {class: 'three', src: 'DrunkEmoji.png'},
-    {class: 'four' , src: 'ScaredEmoji.png'},
-    {class: 'four', src: 'ScaredEmoji.png'},
-    {class: 'five', src: 'SmileEmoji.jpeg'},
-    {class: 'five', src: 'SmileEmoji.jpeg'},
-    {class: 'six', src: 'StarEyes.png'},
-    {class: 'six', src: 'StarEyes.png'},
-    {class: 'seven', src: 'WinkEmoji.jpeg'},
-    {class: 'seven', src: 'WinkEmoji.jpeg'},
-]
 const game = {
     restart(){
         while (screen.firstChild){
             screen.removeChild(screen.lastChild)
+            finished.pop()
+            timer.innerText = 'Timer: 0s'
         }
     },
     clock(){
@@ -47,6 +32,24 @@ const game = {
         },1000)
     },
     makeCards(){
+        arr = [
+            {class: 'zero', src: 'AnnoyedEmoji.png'},
+            {class: 'zero', src: 'AnnoyedEmoji.png'},
+            {class: 'one', src: 'CryingEmoji.jpeg'},
+            {class: 'one', src: 'CryingEmoji.jpeg'},
+            {class: 'two', src: 'DroolingEmoji.png'},
+            {class: 'two', src: 'DroolingEmoji.png'},
+            {class: 'three', src: 'DrunkEmoji.png'},
+            {class: 'three', src: 'DrunkEmoji.png'},
+            {class: 'four' , src: 'ScaredEmoji.png'},
+            {class: 'four', src: 'ScaredEmoji.png'},
+            {class: 'five', src: 'SmileEmoji.jpeg'},
+            {class: 'five', src: 'SmileEmoji.jpeg'},
+            {class: 'six', src: 'StarEyes.png'},
+            {class: 'six', src: 'StarEyes.png'},
+            {class: 'seven', src: 'WinkEmoji.jpeg'},
+            {class: 'seven', src: 'WinkEmoji.jpeg'},
+        ]
         button.style.visibility = 'hidden'
         for (let i = 16; i > 0; i--){
             const ele = document.createElement('div')
