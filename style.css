@@ -1,5 +1,8 @@
+*{
+    color:#EEA47FFF;
+}
 body{
-    background-color: grey;
+    background-color: #9CC3D5FF;
 }
 #controller{
     background-color: white;
@@ -29,7 +32,14 @@ h1{
     text-align: center;
 }
 button{
+    color:#EEA47FFF;
     margin-left: 425px;
+    border: 2px solid #EEA47FFF;
+    background-color: white;
+    height:40px;
+    width:80px;
+    margin-left:415px;
+    border-radius:10%;
 }
 #scoreboard{
     background-color: white;
@@ -41,4 +51,7 @@ button{
 }
 #list{
     text-align: center;
+}
+#title{
+    padding-top:15px;
 }
