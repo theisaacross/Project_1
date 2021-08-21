@@ -23,11 +23,11 @@ const game = {
             timer.innerText = `Timer: ${time}s`
             if (finished.length === 16){
                 clearInterval(timerStart)
-                alert(`It took you ${time} seconds to complete it!`)
                 game.restart()
                 if (time < prevScore){
                     prevScore = time
-                    list.innerText = `${time} Seconds`
+                    const name = prompt('Enter your name: ')
+                    list.innerText = `${name}-${time} Seconds`
                 }
                 button.style.visibility = 'visible'
             }
